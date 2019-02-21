@@ -143,7 +143,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 hours read (About 16553 words)
+                    2 hours read (About 16540 words)
                 </span>
                 
                 
@@ -164,8 +164,8 @@
 <p><div id="primary"></div></p>
 <p><div id="content" class="clearfix"></div></p>
 <p><article id="post-3621" class="post-3621 post type-post status-publish format-standard hentry category-linux category-original tag-apache-pig tag-cannot-find-hadoop-configurations-in-classpath tag-could-not-infer-the-matching-function-for-org-apache-pig-builtin-concat tag-could-not-instantiate-com-twitter-elephantbird-pig-load-hbaseloader tag-error-in-new-logical-plan tag-getschema tag-incompatible-types-in-equalto-operator-left-hand-side tag-inner-bag tag-inner-foreach tag-inner-join tag-join tag-load-function tag-localhost127-0-0-19000-already-tried tag-nested-foreach tag-org-apache-hadoop-ipc-client-retrying-connect-to-server tag-outer-join tag-pig-tutorial-in-chinese tag-pigstorage tag-pig tag-pighbase tag-scalars-can-be-only-used-with-projections tag-try-dpig-usenewlogicalplanfalse tag-udf tag-user-defined-function tag-35 tag-1029 tag-1043 tag-foreach tag-938 tag-1031 tag-792 tag-1087 tag-1085"></article></p>
-<p><div class="entry-content clearfix"></div></p>
-<p></p><p><span style="font-size:16px;"><strong><span style="color:#ff0000;">转载必须注明出处：</span><span style="font-family:arial,helvetica,sans-serif;"><a href="http://www.codelast.com/" target="_blank"><span style="color:#ff0000;">http://www.codelast.com/</span></a></span></strong></span></p><p></p>
+<div class="entry-content clearfix">
+
 <p></p><p>本文可以让刚接触pig的人对一些基础概念有个初步的了解。<br><br>本文大概是互联网上第一篇公开发表的且涵盖大量实际例子的Apache Pig中文教程（由Google搜索可知），文中的大量实例都是作者Darran Zhang（website: codelast.com）在工作、学习中总结的经验或解决的问题，并且添加了较为详尽的说明及注解，此外，作者还在不断地添加本文的内容，希望能帮助一部分人。</p><p></p>
 <p></p><p><a href="http://pig.apache.org/" target="_blank">Apache pig</a>是用来处理大规模数据的高级查询语言，配合Hadoop使用，可以在处理海量数据时达到事半功倍的效果，比使用Java，C++等语言编写大规模数据处理程序的难度要小N倍，实现同样的效果的代码量也小N倍。Twitter就大量使用pig来处理海量数据&mdash;&mdash;有兴趣的，可以看Twitter工程师写的<a href="http://www.slideshare.net/kevinweil/hadoop-pig-and-twitter-nosql-east-2009" target="_blank">这个PPT</a>。<br><br>但是，刚接触pig时，可能会觉得里面的某些概念以及程序实现方法与想像中的很不一样，甚至有些莫名，所以，你需要仔细地研究一下基础概念，这样在写pig程序的时候，才不会觉得非常别扭。<br><br><span id="more-3621"></span><br><br>本文基于以下环境：<br><br>pig 0.8.1</p><p></p>
 <p></p><p>先给出两个链接：<a href="http://pig.apache.org/docs/r0.8.1/piglatin_ref1.html" target="_blank">pig参考手册1</a>，<a href="http://pig.apache.org/docs/r0.8.1/piglatin_ref2.html" target="_blank">pig参考手册2</a>。本文的部分内容来自这两个手册，但涉及到翻译的部分，也是我自己翻译的，因此可能理解与英文有偏差，如果你觉得有疑义，可参考英文内容。</p><p></p>
@@ -231,7 +231,7 @@
 <p></p><p><span style="color: rgb(255, 255, 255); font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 20px; text-align: left; background-color: rgb(255, 255, 255); ">文章来源：</span><a href="http://www.codelast.com/" target="_blank"><span style="color: rgb(255, 255, 255); ">http://www.codelast.com/</span></a></p><p></p>
 <p><div><br><span style="background-color:#00ff00;">（4）</span><span style="color:#ff0000;">FLATTEN</span>操作符的作用</div></p>
 <p><div><br>这个玩意一开始还是挺让我费解的。从字面上看，flatten就是&ldquo;弄平&rdquo;的意思，但是在对一个pig的数据结构操作时，flatten到底是&ldquo;弄平&rdquo;了什么，又有什么作用呢？<br><br>我们还是采用前面的a.txt数据文件来说明：</div></p><p></p>
-<p><pre class="brush:shell;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;"><br>[root@localhost pig]$ cat a.txt<br>a    1    2    3    4.2    9.8<br>a    3    0    5    3.5    2.1<br>b    7    9    9    -    -<br>a    7    9    9    2.6    6.2<br>a    1    2    5    7.7    5.9<br>a    1    2    3    1.4    0.2<br></pre><br></p>
+<p><pre class="brush:shell;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;"><br>[root@localhost pig]$ cat a.txt<br>a    1    2    3    4.2    9.8<br>a    3    0    5    3.5    2.1<br>b    7    9    9    -    -<br>a    7    9    9    2.6    6.2<br>a    1    2    5    7.7    5.9<br>a    1    2    3    1.4    0.2<br></pre><br></p></div><p></p>
 <p></p><p>如果我们按照前文的做法，计算多维度组合下的最后两列的平均值，则：</p><p></p>
 <p><pre class="brush:sql;first-line:1;pad-line-numbers:true;highlight:null;collapse:false;"><br>grunt&gt; A = LOAD &#39;a.txt&#39; AS (col1:chararray, col2:int, col3:int, col4:int, col5:double, col6:double);<br>grunt&gt; B = GROUP A BY (col2, col3, col4);<br>grunt&gt; C = FOREACH B GENERATE group, AVG(A.col5), AVG(A.col6);<br>grunt&gt; DUMP C;<br>((1,2,3),2.8,5.0)<br>((1,2,5),7.7,5.9)<br>((3,0,5),3.5,2.1)<br>((7,9,9),2.6,6.2)<br></pre></p>
 <p></p><p>可见，输出结果中，每一行的第一项是一个tuple（元组），我们来试试看 FLATTEN 的作用：</p><p></p>
