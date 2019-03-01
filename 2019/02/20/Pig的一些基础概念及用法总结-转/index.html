@@ -2,18 +2,25 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Tag: Data Science - Hexo</title>
+<title>Pig的一些基础概念及用法总结[转] - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/Data-Science/index.html">
+    <meta name="description" content="本文转载自Apache Pig的一些基础概念及用法总结          本文可以让刚接触pig的人对一些基础概念有个初步的了解。本文大概是互联网上第一篇公开发表的且涵盖大量实际例子的Apache Pig中文教程（由Google搜索可知），文中的大量实例都是作者Darran Zhang（website: codelast.com）在工作、学习中总结的经验或解决的问题，并且添加了较为详尽的说明及注解">
+<meta name="keywords" content="Data Science">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pig的一些基础概念及用法总结[转]">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/Pig的一些基础概念及用法总结-转/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文转载自Apache Pig的一些基础概念及用法总结          本文可以让刚接触pig的人对一些基础概念有个初步的了解。本文大概是互联网上第一篇公开发表的且涵盖大量实际例子的Apache Pig中文教程（由Google搜索可知），文中的大量实例都是作者Darran Zhang（website: codelast.com）在工作、学习中总结的经验或解决的问题，并且添加了较为详尽的说明及注解">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.codelast.com/wp-content/uploads/2011/12/pig_syntax_highlight_emacs.png">
+<meta property="og:updated_time" content="2019-03-01T07:30:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Pig的一些基础概念及用法总结[转]">
+<meta name="twitter:description" content="本文转载自Apache Pig的一些基础概念及用法总结          本文可以让刚接触pig的人对一些基础概念有个初步的了解。本文大概是互联网上第一篇公开发表的且涵盖大量实际例子的Apache Pig中文教程（由Google搜索可知），文中的大量实例都是作者Darran Zhang（website: codelast.com）在工作、学习中总结的经验或解决的问题，并且添加了较为详尽的说明及注解">
+<meta name="twitter:image" content="http://www.codelast.com/wp-content/uploads/2011/12/pig_syntax_highlight_emacs.png">
 
 
 
@@ -85,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Hexo" height="28">
+                <img src="/images/logo.svg" alt="Pig的一些基础概念及用法总结[转]" height="28">
             
             </a>
         </div>
@@ -131,73 +138,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Data Science</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-01T07:26:14.000Z">2019-03-01</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 minutes read (About 1254 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/01/MapReduce和YARN的区别-转/">MapReduce和YARN的区别[转]</a>
-            
-        </h1>
-        <div class="content">
-            <p>初学Hadoop，多多学习 :)</p>
-<p>本文转载自<a href="https://blog.csdn.net/hahachenchen789/article/details/80489506" target="_blank" rel="noopener">MapReduce和YARN的区别</a><br>Hadoop 的最常见用法之一是 Web 搜索。虽然它不是唯一的软件框架应用程序，但作为一个并行数据处理引擎，它的表现非常突出。Hadoop 最有趣的方面之一是 Map and Reduce 流程，它受到Google开发的启发。这个流程称为创建索引，它将 Web爬行器检索到的文本 Web 页面作为输入，并且将这些页面上的单词的频率报告作为结果。然后可以在整个 Web 搜索过程中使用这个结果从已定义的搜索参数中识别内容。</p>
-<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>最简单的 MapReduce应用程序至少包含 3 个部分：一个 Map 函数、一个 Reduce 函数和一个 main 函数。main 函数将作业控制和文件输入/输出结合起来。在这点上，Hadoop 提供了大量的接口和抽象类，从而为 Hadoop应用程序开发人员提供许多工具，可用于调试和性能度量等。</p>
-<p>MapReduce 本身就是用于并行处理大数据集的软件框架。MapReduce 的根源是函数性编程中的 map 和 reduce 函数。它由两个可能包含有许多实例（许多 Map 和 Reduce）的操作组成。Map 函数接受一组数据并将其转换为一个键/值对列表，输入域中的每个元素对应一个键/值对。Reduce 函数接受 Map 函数生成的列表，然后根据它们的键（为每个键生成一个键/值对）缩小键/值对列表。</p>
-<p>这里提供一个示例，帮助您理解它。假设输入域是 one small step for man,one giant leap for mankind。在这个域上运行 Map 函数将得出以下的键/值对列表：</p>
-<p>（one,1） (small,1） (step,1） (for,1） (man,1） (one,1） (giant,1） (leap,1） (for,1） (mankind,1）</p>
-<p>如果对这个键/值对列表应用 Reduce 函数，将得到以下一组键/值对：</p>
-<p>（one,2） (small,1） (step,1） (for,2） (man,1）（giant,1） (leap,1） (mankind,1）</p>
-<p>结果是对输入域中的单词进行计数，这无疑对处理索引十分有用。但是，假设有两个输入域，第一个是 one small step for man，第二个是 one giant leap for mankind。您可以在每个域上执行 Map 函数和 Reduce 函数，然后将这两个键/值对列表应用到另一个 Reduce 函数，这时得到与前面一样的结果。换句话说，可以在输入域并行使用相同的操作，得到的结果是一样的，但速度更快。这便是 MapReduce 的威力；它的并行功能可在任意数量的系统上使用。</p>
-<h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><p>它是如何实现这个功能的？一个代表客户机在单个主系统上启动的 MapReduce应用程序称为 JobTracker。类似于 NameNode，它是 Hadoop 集群中惟一负责控制 MapReduce应用程序的系统。在应用程序提交之后，将提供包含在 HDFS 中的输入和输出目录。JobTracker 使用文件块信息（物理量和位置）确定如何创建其他 TaskTracker 从属任务。MapReduce应用程序被复制到每个出现输入文件块的节点。将为特定节点上的每个文件块创建一个惟一的从属任务。每个 TaskTracker 将状态和完成信息报告给 JobTracker。</p>
-<p>Hadoop 的这个特点非常重要，因为它并没有将存储移动到某个位置以供处理，而是将处理移动到存储。这通过根据集群中的节点数调节处理，因此支持高效的数据处理。</p>
-<p>Hadoop是一种分布式数据和计算的框架。它很擅长存储大量的半结构化的数据集。数据可以随机存放，所以一个磁盘的失败并不会带来数据丢失。Hadoop也非常擅长分布式计算——快速地跨多台机器处理大型数据集合。</p>
-<p>MapReduce是处理大量半结构化数据集合的编程模型。编程模型是一种处理并结构化特定问题的方式。例如，在一个关系数据库中，使用一种集合语言执行查询，如SQL。告诉语言想要的结果，并将它提交给系统来计算出如何产生计算。还可以用更传统的语言(C++，Java)，一步步地来解决问题。这是两种不同的编程模型，MapReduce就是另外一种。</p>
-<p>MapReduce和Hadoop是相互独立的，实际上又能相互配合工作得很好。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -218,7 +158,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/02/20/Pig的一些基础概念及用法总结-转/">Pig的一些基础概念及用法总结[转]</a>
+                Pig的一些基础概念及用法总结[转]
             
         </h1>
         <div class="content">
@@ -641,6 +581,15 @@ SyntaxHighlighter.all();
 
         </div>
         
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Data-Science/">Data Science</a>
+                </div>
+            </div>
+        </div>
+        
         
         
     </div>
@@ -652,7 +601,19 @@ SyntaxHighlighter.all();
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/01/MapReduce和YARN的区别-转/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">MapReduce和YARN的区别[转]</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
 
 
 </div>
@@ -1018,7 +979,7 @@ SyntaxHighlighter.all();
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Hexo" height="28">
+                    <img src="/images/logo.svg" alt="Pig的一些基础概念及用法总结[转]" height="28">
                 
                 </a>
                 <p class="is-size-7">
