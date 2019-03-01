@@ -157,7 +157,8 @@
         </h1>
         <div class="content">
             <p>初学Hadoop，多多学习 :)</p>
-<p>本文转载自<a href="https://blog.csdn.net/hahachenchen789/article/details/80489506" target="_blank" rel="noopener">MapReduce和YARN的区别</a><br>Hadoop 的最常见用法之一是 Web 搜索。虽然它不是唯一的软件框架应用程序，但作为一个并行数据处理引擎，它的表现非常突出。Hadoop 最有趣的方面之一是 Map and Reduce 流程，它受到Google开发的启发。这个流程称为创建索引，它将 Web爬行器检索到的文本 Web 页面作为输入，并且将这些页面上的单词的频率报告作为结果。然后可以在整个 Web 搜索过程中使用这个结果从已定义的搜索参数中识别内容。</p>
+<p>本文转载自<a href="https://blog.csdn.net/hahachenchen789/article/details/80489506" target="_blank" rel="noopener">MapReduce和YARN的区别</a></p>
+<p>Hadoop 的最常见用法之一是 Web 搜索。虽然它不是唯一的软件框架应用程序，但作为一个并行数据处理引擎，它的表现非常突出。Hadoop 最有趣的方面之一是 Map and Reduce 流程，它受到Google开发的启发。这个流程称为创建索引，它将 Web爬行器检索到的文本 Web 页面作为输入，并且将这些页面上的单词的频率报告作为结果。然后可以在整个 Web 搜索过程中使用这个结果从已定义的搜索参数中识别内容。</p>
 <h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>最简单的 MapReduce应用程序至少包含 3 个部分：一个 Map 函数、一个 Reduce 函数和一个 main 函数。main 函数将作业控制和文件输入/输出结合起来。在这点上，Hadoop 提供了大量的接口和抽象类，从而为 Hadoop应用程序开发人员提供许多工具，可用于调试和性能度量等。</p>
 <p>MapReduce 本身就是用于并行处理大数据集的软件框架。MapReduce 的根源是函数性编程中的 map 和 reduce 函数。它由两个可能包含有许多实例（许多 Map 和 Reduce）的操作组成。Map 函数接受一组数据并将其转换为一个键/值对列表，输入域中的每个元素对应一个键/值对。Reduce 函数接受 Map 函数生成的列表，然后根据它们的键（为每个键生成一个键/值对）缩小键/值对列表。</p>
 <p>这里提供一个示例，帮助您理解它。假设输入域是 one small step for man,one giant leap for mankind。在这个域上运行 Map 函数将得出以下的键/值对列表：</p>
@@ -213,8 +214,6 @@
         </h1>
         <div class="content">
             <p>本文转载自<a href="https://www.codelast.com/%E5%8E%9F%E5%88%9Bpig%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E6%80%BB%E7%BB%93/" target="_blank">Apache Pig的一些基础概念及用法总结</a></p>
-<p><div class="header-post-title-container clearfix"></div></p>
-<p><div class="inner-wrap"><br></div><br><br></p>
 <p><div id="main" class="clearfix"></div></p>
 <p><div class="inner-wrap"></div></p>
 <p><div id="primary"></div></p>
