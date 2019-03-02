@@ -1,6 +1,10 @@
 /* ---------------------------------
  *       Override CSS Framework
  * --------------------------------- */
+/* -------------my code------------*/
+body {
+  background: url("/images/bg.png");
+}
 html {
   font-size: 14px;
 }
